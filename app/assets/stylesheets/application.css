@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.chat-bubble {
+  max-width: 75%;
+}
+
+.chat-bubble p:last-child {
+  margin-bottom: 0;
+}

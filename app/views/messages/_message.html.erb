@@ -1,0 +1,5 @@
+<div id="<%= dom_id(message) %>" class="d-flex mb-3 <%= message.role_user? ? "justify-content-end" : "justify-content-start" %>">
+  <div class="chat-bubble px-3 py-2 rounded-3 <%= message.role_user? ? "bg-primary text-white" : "bg-body-secondary" %>">
+    <%= simple_format(message.content) %>
+  </div>
+</div>
