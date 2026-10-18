@@ -1,0 +1,34 @@
+<h1 class="h3 mb-4">新しいルームを作る</h1>
+
+<%= form_with model: @chat_room do |f| %>
+  <% if @chat_room.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% @chat_room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :situation, "シチュエーション", class: "form-label" %>
+    <%= f.text_area :situation, rows: 4, maxlength: ChatRoom::SITUATION_MAX_LENGTH, class: "form-control",
+                    placeholder: "例: ニューヨークのカフェ。あなたは店員で、私はコーヒーを注文する客。" %>
+    <div class="form-text">AIが演じる役割と場面を書いてください。日本語でも英語でもかまいません。</div>
+  </div>
+
+  <fieldset class="mb-4">
+    <legend class="form-label fs-6">レベル</legend>
+    <% ChatRoom.levels.each_key do |level| %>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :level, level, class: "form-check-input" %>
+        <%= f.label :level, level_label(level), value: level, class: "form-check-label" %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <div class="d-flex gap-2">
+    <%= f.submit "ルームを作成", class: "btn btn-primary", data: { turbo_submits_with: "作成中..." } %>
+  </div>
+<% end %>

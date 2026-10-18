@@ -1,0 +1,8 @@
+<div id="reply_status">
+  <% case status %>
+  <% when :pending %>
+    <p class="text-secondary small">AIが返信を考えています...</p>
+  <% when :failed %>
+    <div class="alert alert-danger">AIサーバーに接続できませんでした。しばらくしてから再度お試しください。</div>
+  <% end %>
+</div>

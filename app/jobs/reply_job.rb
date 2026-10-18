@@ -5,6 +5,13 @@ class ReplyJob < ApplicationJob
   discard_on ActiveJob::DeserializationError
 
   def perform(chat_room)
-    chat_room.generate_reply
+    return if chat_room.generate_reply
+
+    Turbo::StreamsChannel.broadcast_replace_to(
+      chat_room,
+      target: "reply_status",
+      partial: "chat_rooms/reply_status",
+      locals: { status: :failed }
+    )
   end
 end
