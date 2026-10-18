@@ -1,0 +1,25 @@
+<h1>日本語 → 英語 翻訳</h1>
+
+<%= turbo_frame_tag "translation" do %>
+  <%= form_with model: @translation, url: translation_path do |f| %>
+    <% if @translation.errors.any? %>
+      <ul>
+        <% @translation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div>
+      <%= f.label :source_text, "日本語" %>
+      <%= f.text_area :source_text, rows: 5, maxlength: Translation::MAX_LENGTH %>
+    </div>
+
+    <%= f.submit "翻訳する", data: { turbo_submits_with: "翻訳中..." } %>
+  <% end %>
+
+  <% if @translation.translated_text.present? %>
+    <h2>英訳</h2>
+    <div><%= simple_format(@translation.translated_text) %></div>
+  <% end %>
+<% end %>
