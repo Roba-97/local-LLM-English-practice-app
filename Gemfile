@@ -64,3 +64,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "activeagent", "~> 1.9"
+
+gem "openai", "~> 0.106.0"
