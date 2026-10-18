@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "assist" do %>
+  <%= form_with model: assist_request, url: chat_room_assist_path(chat_room) do |f| %>
+    <% if assist_request.errors.any? %>
+      <div class="alert alert-danger py-2">
+        <%= assist_request.errors.full_messages.to_sentence %>
+      </div>
+    <% end %>
+
+    <div class="mb-2">
+      <%= f.label :message, "言いたいこと", class: "form-label" %>
+      <%= f.text_area :message, rows: 3, maxlength: AssistRequest::MAX_LENGTH, class: "form-control",
+                      placeholder: "例: おすすめのコーヒーを聞きたい" %>
+    </div>
+
+    <%= f.submit "英文を提案してもらう", class: "btn btn-outline-primary btn-sm", data: { turbo_submits_with: "考え中..." } %>
+  <% end %>
+
+  <% if request_id %>
+    <%= turbo_stream_from "assist", request_id %>
+    <%= render "chat_rooms/assists/result", assist_request: assist_request %>
+  <% end %>
+<% end %>

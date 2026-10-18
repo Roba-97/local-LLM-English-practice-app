@@ -11,7 +11,7 @@ class AssistJob < ApplicationJob
     Turbo::StreamsChannel.broadcast_replace_to(
       "assist", request_id,
       target: "assist_result",
-      partial: "translations/result",
+      partial: "chat_rooms/assists/result",
       locals: { assist_request: }
     )
   end

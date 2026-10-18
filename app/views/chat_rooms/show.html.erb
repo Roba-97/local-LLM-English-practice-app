@@ -8,7 +8,21 @@
   </div>
 </div>
 
-<div id="messages">
-  <%= render @messages %>
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div id="messages">
+      <%= render @messages %>
+    </div>
+    <%= render "chat_rooms/reply_status", status: @chat_room.awaiting_reply? ? :pending : :idle %>
+  </div>
+
+  <aside class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="h6">お助け機能</h2>
+        <p class="text-secondary small">言いたいことを日本語で書くと、そのまま使える英文を提案します。</p>
+        <%= render "chat_rooms/assists/form", chat_room: @chat_room, assist_request: @assist_request, request_id: nil %>
+      </div>
+    </div>
+  </aside>
 </div>
-<%= render "chat_rooms/reply_status", status: @chat_room.awaiting_reply? ? :pending : :idle %>

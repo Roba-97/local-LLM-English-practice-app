@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resource :translation, only: %i[new create]
-  resources :chat_rooms, only: %i[index new create show]
+  resources :chat_rooms, only: %i[index new create show] do
+    resource :assist, only: :create, module: :chat_rooms
+  end
   root "chat_rooms#index"
 end
