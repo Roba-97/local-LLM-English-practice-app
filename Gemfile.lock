@@ -47,6 +47,15 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    activeagent (1.9.1)
+      actionpack (>= 7.2, <= 9.0)
+      actionview (>= 7.2, <= 9.0)
+      activeagents-telemetry (~> 0.1)
+      activejob (>= 7.2, <= 9.0)
+      activemodel (>= 7.2, <= 9.0)
+      activesupport (>= 7.2, <= 9.0)
+      railties (>= 7.2, <= 9.0)
+    activeagents-telemetry (0.3.2)
     activejob (8.1.4)
       activesupport (= 8.1.4)
       globalid (>= 0.3.6)
@@ -202,6 +211,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-musl)
       racc (~> 1.4)
+    openai (0.106.0)
+      connection_pool (>= 2.2.3)
+      logger
     ostruct (0.6.3)
     parallel (2.3.0)
     parser (3.3.12.0)
@@ -382,6 +394,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  activeagent (~> 1.9)
   bootsnap
   brakeman
   bundler-audit
@@ -391,6 +404,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  openai (~> 0.106.0)
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.4)
@@ -414,6 +428,8 @@ CHECKSUMS
   actionpack (8.1.4) sha256=245493cc51be195a7645e6fc184880fa7e5b32ff1a08e053ee31f58c76e30ea4
   actiontext (8.1.4) sha256=33ee99bea7da6af911fc7d98b17013a8e1ec62aa01b20b20e9a5366f40dbf644
   actionview (8.1.4) sha256=eff1efd07c4d969abad288322b423bcb67fdbab5e324c91ca37352b80f226076
+  activeagent (1.9.1) sha256=870c0bea700065ffe94cf85a6e7d6123bd0b27b8d9dbd2e4f441cf9415fa9b5f
+  activeagents-telemetry (0.3.2) sha256=796f5068422b36fc9d22840ac3ec64b1c773206c23c85eae270233a2cf6baed0
   activejob (8.1.4) sha256=4ed5b2ed8d4cc5c8f5f09becfef8346f202a4884eee0c8c73cae5ac378824099
   activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
   activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
@@ -482,6 +498,7 @@ CHECKSUMS
   nokogiri (1.19.4-arm-linux-musl) sha256=588923c101bcfa78869734d247d25b598674323e7f22474fc468f6e5647311eb
   nokogiri (1.19.4-x86_64-linux-gnu) sha256=379fae440b28915e3f19d752ce2dcf8465ed2b2fbefd2a7ca0dd497bc981a06a
   nokogiri (1.19.4-x86_64-linux-musl) sha256=17dfb7c1fa194ae02fbf7c51a7afc8d278045ab3fdacfd86f91d02d7b274470b
+  openai (0.106.0) sha256=3e238b0d1825ac9e51ec0397e0c3ec27d9078f6ebe9ad6af60477208e2895379
   ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
   parallel (2.3.0) sha256=f75a3e904101ce6a1ccb6b8dc800cbafd42166d83330192438dcf29395167a6f
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
