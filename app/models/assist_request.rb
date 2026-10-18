@@ -3,7 +3,6 @@ class AssistRequest
   include ActiveModel::Attributes
 
   MAX_LENGTH = 1000
-  LEVELS = %w[beginner intermediate advanced].freeze
 
   attribute :message, :string
   attribute :level, :string, default: "beginner"
@@ -11,7 +10,7 @@ class AssistRequest
   attr_reader :suggestion
 
   validates :message, presence: true, length: { maximum: MAX_LENGTH }
-  validates :level, inclusion: { in: LEVELS }
+  validates :level, inclusion: { in: ChatRoom.levels.keys }
 
   def assist
     return false if invalid?
