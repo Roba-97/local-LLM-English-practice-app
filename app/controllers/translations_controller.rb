@@ -1,14 +1,14 @@
 class TranslationsController < ApplicationController
   def new
-    @translation = Translation.new
+    @assist_request = AssistRequest.new
   end
 
   def create
-    @translation = Translation.new(translation_params)
+    @assist_request = AssistRequest.new(assist_request_params)
 
-    if @translation.valid?
+    if @assist_request.valid?
       @request_id = SecureRandom.uuid
-      TranslationJob.perform_later(@request_id, @translation.source_text)
+      AssistJob.perform_later(@request_id, @assist_request.message, @assist_request.level)
       render :new
     else
       render :new, status: :unprocessable_entity
@@ -17,7 +17,7 @@ class TranslationsController < ApplicationController
 
   private
 
-  def translation_params
-    params.expect(translation: [ :source_text ])
+  def assist_request_params
+    params.expect(assist_request: [ :message ])
   end
 end

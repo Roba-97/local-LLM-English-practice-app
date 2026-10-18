@@ -1,10 +1,11 @@
-<div id="translation_result">
-  <% if translation.translated_text.present? %>
-    <h2>英訳</h2>
-    <div><%= simple_format(translation.translated_text) %></div>
-  <% elsif translation.errors.any? %>
-    <p><%= translation.errors.full_messages.to_sentence %></p>
+<div id="assist_result" class="mt-3">
+  <% if assist_request.suggestion.present? %>
+    <div class="card">
+      <div class="card-body"><%= simple_format(assist_request.suggestion) %></div>
+    </div>
+  <% elsif assist_request.errors.any? %>
+    <div class="alert alert-danger"><%= assist_request.errors.full_messages.to_sentence %></div>
   <% else %>
-    <p>翻訳中...</p>
+    <p class="text-secondary">考え中...</p>
   <% end %>
 </div>
