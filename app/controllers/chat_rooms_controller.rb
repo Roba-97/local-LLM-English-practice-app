@@ -21,6 +21,7 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.find(params[:id])
     @messages = @chat_room.messages.order(:created_at)
+    @message = Message.new
     @assist_request = AssistRequest.new
   end
 
