@@ -18,8 +18,8 @@
     <%= f.submit "翻訳する", data: { turbo_submits_with: "翻訳中..." } %>
   <% end %>
 
-  <% if @translation.translated_text.present? %>
-    <h2>英訳</h2>
-    <div><%= simple_format(@translation.translated_text) %></div>
+  <% if @request_id %>
+    <%= turbo_stream_from "translation", @request_id %>
+    <%= render "result", translation: @translation %>
   <% end %>
 <% end %>

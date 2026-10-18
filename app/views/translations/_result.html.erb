@@ -1,0 +1,10 @@
+<div id="translation_result">
+  <% if translation.translated_text.present? %>
+    <h2>英訳</h2>
+    <div><%= simple_format(translation.translated_text) %></div>
+  <% elsif translation.errors.any? %>
+    <p><%= translation.errors.full_messages.to_sentence %></p>
+  <% else %>
+    <p>翻訳中...</p>
+  <% end %>
+</div>
