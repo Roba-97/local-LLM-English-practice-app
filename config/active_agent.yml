@@ -2,7 +2,7 @@ default: &default
   ollama:
     service: "Ollama"
     base_url: <%= ENV.fetch("OLLAMA_BASE_URL", "http://127.0.0.1:11434/v1") %>
-    model: <%= ENV.fetch("OLLAMA_MODEL", "llama3.2:1b") %>
+    model: <%= ENV.fetch("OLLAMA_MODEL", "gemma3:4b") %>
 
 development:
   <<: *default
