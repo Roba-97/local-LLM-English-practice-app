@@ -67,4 +67,4 @@ end
 
 gem "activeagent", "~> 1.9"
 
-gem "openai", "~> 0.106.0"
+gem "openai", "~> 0.114.0"
